@@ -125,7 +125,7 @@ function AppReact() {
       </div>
       <div className={cx("drum-pad")}>
         {bankOne.map((bank1, index)=>
-           <DrumNode className={bank1.id} index={bank1.id} src={bank1.url} keyTrigger={bank1.keyTrigger} handleRef={refInput} keyCode={bank1.keyCode} ></DrumNode>
+           <DrumNode className={bank1.id} index={bank1.id} src={bank1.url} keyTrigger={bank1.keyTrigger} handleRef={refInput} keyCode={bank1.keyCode} valueSource={volume/100}></DrumNode>
         )}
         
       </div>
