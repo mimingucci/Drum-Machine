@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import clsx from 'clsx';
 import App from '../sass/app.module.scss';
 import classNames from 'classnames/bind';
 import DrumNode from './drum-node.js';
@@ -98,12 +97,17 @@ const bankOne = [{
     id: 'Snare',
     url: 'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3'
   }];
+  const banks=[bankOne, bankTwo];
   
-  const banks = [bankOne, bankTwo];
 function AppReact() {
+    
     const refInput=React.createRef(null);
     const [volume, setVolume]=useState(30);
-    const refVolume=React.createRef(null);
+    const [ver, setVer]=useState(0);
+    function changeVer(){
+      setVer(1-ver);
+    }
+    
     function onChangeVolume({target}){
       const valueVolume=Number.parseInt(target.value, 10);
       setVolume(valueVolume);
@@ -120,15 +124,14 @@ function AppReact() {
          </div>
          <div className={cx("drum-control-bank")}>
           <span>Smooth Piano Kit</span>
-          <span className={cx("slider")}></span>
+          <span className={cx("slider")} onClick={changeVer}></span>
          </div>
       </div>
       <div className={cx("drum-pad")}>
-        {bankOne.map((bank1, index)=>
+        {banks[ver].map((bank1)=>
            <DrumNode className={bank1.id} index={bank1.id} src={bank1.url} keyTrigger={bank1.keyTrigger} handleRef={refInput} keyCode={bank1.keyCode} valueSource={volume/100}></DrumNode>
         )}
-        
-      </div>
+         </div>
 
     </div> );
 }

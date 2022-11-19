@@ -2,7 +2,6 @@ $mailColor : #35cac5;
 $blackColor : #000;
 $whileColor : #fff;
 $grColor : #aaaaaa;
-$ver: 1;
 
 *{
     box-sizing: border-box;
@@ -85,23 +84,7 @@ $ver: 1;
     border-radius: 50%;
     }
 }
-.slider:active{
-    @if ($ver==1) {
-        .slider::before{
-            right: 0 !important;
 
-        }
-        $ver:2;
-    }
-    @if ($ver==2) {
-        .slider::before{
-            right: 0 !important;
-
-        }
-        $ver:1;
-    }
-    
-}
 .active{
     background-color: $mailColor;
 }
